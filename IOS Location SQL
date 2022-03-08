@@ -1,0 +1,12 @@
+SELECT
+datetime(ZRTCLLOCATIONMO.ZTIMESTAMP +978307200, 'unixepoch') AS "Date & Time UTC",
+datetime(ZRTCLLOCATIONMO.ZTIMESTAMP +978307200, 'unixepoch', 'localtime') AS "Date & Time (CST)",
+ZRTCLLOCATIONMO.ZLATITUDE AS 'latitutde',
+ZRTCLLOCATIONMO.ZLONGITUDE AS 'longitutde',
+ZRTCLLOCATIONMO.ZHORIZONTALACCURACY AS 'Accuracy (Meters)',
+CASE ZRTCLLOCATIONMO.ZSPEED
+when -1 then 'Not Available'
+Else ZRTCLLOCATIONMO.ZSPEED
+end as 'Speed Meters Per Second'
+FROM ZRTCLLOCATIONMO
+order by "Date & Time (CST)" DESC
