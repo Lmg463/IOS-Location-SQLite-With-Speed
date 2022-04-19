@@ -4,9 +4,11 @@ datetime(ZRTCLLOCATIONMO.ZTIMESTAMP +978307200, 'unixepoch', 'localtime') AS "Da
 ZRTCLLOCATIONMO.ZLATITUDE AS 'latitutde',
 ZRTCLLOCATIONMO.ZLONGITUDE AS 'longitutde',
 ZRTCLLOCATIONMO.ZHORIZONTALACCURACY AS 'Accuracy (Meters)',
+ZRTCLLOCATIONMO.zspeed*2.23694 AS "Miles Per Hour",
 CASE ZRTCLLOCATIONMO.ZSPEED
 when -1 then 'Not Available'
 Else ZRTCLLOCATIONMO.ZSPEED
-end as 'Speed Meters Per Second'
+end as "Speed Meters Per Second"
 FROM ZRTCLLOCATIONMO
+where "Speed Meters Per Second" between 0 and 100
 order by "Date & Time (CST)" DESC
